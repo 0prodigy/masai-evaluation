@@ -12,12 +12,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getAllEmployee } from "../Redux/Employee/action";
+import SearchBar from "./SearchBar";
 const Wrapper = styled.div`
   background: #f5f7f9;
   padding: 20px;
+  position: relative;
+
   .table-container {
     width: 700px;
     margin: 50px auto;
+    overflow: visible;
+    position: relative;
   }
   .MuiTableCell-body {
     padding-top: 5px;
@@ -42,6 +47,7 @@ function Employees() {
   return (
     <Wrapper>
       <TableContainer component={Paper} className="table-container">
+        <SearchBar />
         <Table aria-label="Employee Tabel">
           <TableHead>
             <TableRow>
