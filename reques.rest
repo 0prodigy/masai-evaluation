@@ -44,3 +44,8 @@ Content-Type: application/json
 {
     "fillterBy" : {"department":"technical"}
 }
+
+###
+
+GET http://localhost:5000/api/employee/findByName/ak
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWJjY2MwOWUzNzY4MTZiNDFkN2RhYSIsImlhdCI6MTYwNDA0OTM0MH0.ZTEzKUVYR7_qR9aGGCA8TTX2BB7-_ECxz0pZzZD10hE
