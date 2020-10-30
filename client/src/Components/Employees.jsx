@@ -56,8 +56,8 @@ function Employees() {
           <TableBody>
             {employee.employee &&
               employee.employee?.map((item) => (
-                <TableRow>
-                  <TableCell key={item.id}>
+                <TableRow key={item.id}>
+                  <TableCell>
                     <img
                       src={item.image || "/logo192.png"}
                       alt="lgo"

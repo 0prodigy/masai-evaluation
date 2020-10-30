@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import EmployeeForm from "../Components/EmployeeForm";
 import Employees from "../Components/Employees";
 import LoginFrom from "../Components/LoginFrom";
@@ -39,6 +39,7 @@ function MainRoutes() {
           <Route path="/dashboard" exact render={() => <Employees />} />
           <Route path="/dashboard/add" render={() => <EmployeeForm />} />
         </Switch>
+        <Link to="/dashboard/add">Add</Link>
       </PrivateRoutes>
     </Switch>
   );

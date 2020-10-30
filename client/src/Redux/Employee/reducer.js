@@ -26,16 +26,33 @@ const reducer = (state = init, { type, payload }) => {
     case GETALL_FAILURE:
       return {
         ...state,
-        loading: true,
+        loading: false,
         errMsg: payload,
       };
     case GETALL_SUCCESS:
       return {
         ...state,
-        loading: true,
+        loading: false,
         successMsg: payload.message,
         employee: payload.employees.data,
         totalPage: payload.employees.totalPage,
+      };
+    case ADD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ADD_EMPLOYEE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errMsg: payload.message,
+      };
+    case ADD_EMPLOYEE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        errMsg: payload.message,
       };
     default:
       return state;

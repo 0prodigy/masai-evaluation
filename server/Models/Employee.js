@@ -31,6 +31,10 @@ const EmployeeSchema = new Schema({
   image: {
     type: String,
   },
+  gender: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Employee", EmployeeSchema);

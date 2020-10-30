@@ -15,22 +15,41 @@ const paginatedData = require("../Middleware/pagination");
 const Employee = require("../Models/Employee");
 
 const storage = multer.diskStorage({
-  destination: function (req, file, db) {
+  destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../uploads"));
   },
-  filename: function (req, file, db) {
+  filename: function (req, file, cb) {
     cb(null, file.originalname.split(" ").join("-"));
   },
 });
 
-const upload = multer({
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/JPEG" ||
+    file.mimetype === "image/PNG" ||
+    file.mimetype === "image/JPG"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+let upload = multer({
   storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+  fileFilter: fileFilter,
 });
 
 router.post(
   "/add",
-  addEmployeeValidation,
   upload.single("image"),
+  addEmployeeValidation,
   imgURl,
   authenicateToken,
   addEmployee

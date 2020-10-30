@@ -23,6 +23,7 @@ const addEmployee = async (req, res) => {
       id: v4(),
       ...req.body,
       addBy: req.authEmail,
+      image: req.url,
     });
     try {
       await employee.save();
