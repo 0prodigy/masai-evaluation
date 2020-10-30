@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
 const { authRouter } = require("./Routes/auth");
+const { employeeRouter } = require("./Routes/employee");
 
 const app = express();
 
@@ -27,7 +28,8 @@ mongoose.connect(
   }
 );
 
-app.use("/api/auth/", authRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/employee", employeeRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

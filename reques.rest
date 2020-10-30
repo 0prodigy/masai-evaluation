@@ -16,3 +16,22 @@ Content-Type: application/json
     "email":"test@gmail.com",
     "password":"1234567"
 }
+
+###
+
+POST http://localhost:5000/api/employee/add 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWJjY2MwOWUzNzY4MTZiNDFkN2RhYSIsImlhdCI6MTYwNDA0OTM0MH0.ZTEzKUVYR7_qR9aGGCA8TTX2BB7-_ECxz0pZzZD10hE
+Content-Type: application/json
+
+{
+    "name":"Akash",
+    "department":"technical",
+    "gender":"",
+    "joiningDate":"12-12-12"
+}
+
+###
+
+GET http://localhost:5000/api/employee/77d29d05-a835-4a4b-963a-7fffac525671 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWJjY2MwOWUzNzY4MTZiNDFkN2RhYSIsImlhdCI6MTYwNDA0OTM0MH0.ZTEzKUVYR7_qR9aGGCA8TTX2BB7-_ECxz0pZzZD10hE
+
