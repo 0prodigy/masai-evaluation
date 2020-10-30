@@ -49,3 +49,15 @@ Content-Type: application/json
 
 GET http://localhost:5000/api/employee/findByName/ak
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWJjY2MwOWUzNzY4MTZiNDFkN2RhYSIsImlhdCI6MTYwNDA0OTM0MH0.ZTEzKUVYR7_qR9aGGCA8TTX2BB7-_ECxz0pZzZD10hE
+
+
+###
+POST  http://localhost:5000/api/employee/addPayment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOWJjY2MwOWUzNzY4MTZiNDFkN2RhYSIsImlhdCI6MTYwNDA0OTM0MH0.ZTEzKUVYR7_qR9aGGCA8TTX2BB7-_ECxz0pZzZD10hE
+
+{
+    "id":"77d29d05-a835-4a4b-963a-7fffac525671",
+    "amount":5000,
+    "date":"12-12-12"
+}

@@ -4,9 +4,13 @@ const {
   findEmployee,
   getAllEmployee,
   findEmployeeByName,
+  addPayemnt,
 } = require("../Controllers/employeeController");
 const authenicateToken = require("../Middleware/authenticateToken");
-const { addEmployeeValidation } = require("../Utils/employeeValidation");
+const {
+  addEmployeeValidation,
+  addPaymentValidation,
+} = require("../Utils/employeeValidation");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
@@ -58,5 +62,6 @@ router.post(
 router.get("/all", authenicateToken, paginatedData(Employee), getAllEmployee);
 router.get("/findById/:id", authenicateToken, findEmployee);
 router.get("/findByName/:name", authenicateToken, findEmployeeByName);
+router.post("/addPayment", authenicateToken, addPaymentValidation, addPayemnt);
 
 module.exports.employeeRouter = router;

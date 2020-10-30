@@ -17,7 +17,7 @@ const addEmployee = async (req, res) => {
   const errors = myValidation(req);
   if (!errors.isEmpty()) {
     const { err, message } = errors.array()[0];
-    return res.json({ err, message });
+    return res.status(422).json({ err, message });
   } else {
     const employee = new Employee({
       id: v4(),
@@ -76,9 +76,40 @@ const findEmployeeByName = async (req, res) => {
   }
 };
 
+const addPayemnt = async (req, res) => {
+  const errors = myValidation(req);
+  console.log(req.body);
+  if (!errors.isEmpty()) {
+    const { err, message } = errors.array()[0];
+    return res.status(422).json({ err, message });
+  } else {
+    try {
+      let user = await Employee.findOne({ id: req.body.id });
+
+      user.payments = [
+        ...user.payments,
+        {
+          amount: req.body.amount,
+          date: req.body.date,
+        },
+      ];
+
+      await Employee.updateOne(
+        { id: req.body.id },
+        { $set: { payments: user.payments } }
+      );
+      res.json({ err: false, message: "Payment successfully sent" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ err: true, message: "Something went wrong" });
+    }
+  }
+};
+
 module.exports = {
   addEmployee,
   findEmployee,
   getAllEmployee,
   findEmployeeByName,
+  addPayemnt,
 };
