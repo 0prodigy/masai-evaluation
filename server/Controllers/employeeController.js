@@ -53,4 +53,12 @@ const findEmployee = async (req, res) => {
   }
 };
 
-module.exports = { addEmployee, findEmployee };
+const getAllEmployee = async (req, res) => {
+  try {
+    res.json({ err: false, message: "Success", employees: res.result });
+  } catch (err) {
+    res.sendStatus(500).json({ err: true, message: "Something went wrong" });
+  }
+};
+
+module.exports = { addEmployee, findEmployee, getAllEmployee };
