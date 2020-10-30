@@ -61,4 +61,23 @@ const getAllEmployee = async (req, res) => {
   }
 };
 
-module.exports = { addEmployee, findEmployee, getAllEmployee };
+const findEmployeeByName = async (req, res) => {
+  try {
+    const allEmployee = await Employee.find();
+    const result = allEmployee.filter(
+      (employee) =>
+        employee.name.toLowerCase().indexOf(req.params.name.toLowerCase()) != -1
+    );
+    res.json({ err: false, message: "Success", employee: result });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500).json({ err: true, message: "Something went wrong" });
+  }
+};
+
+module.exports = {
+  addEmployee,
+  findEmployee,
+  getAllEmployee,
+  findEmployeeByName,
+};

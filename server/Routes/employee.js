@@ -3,6 +3,7 @@ const {
   addEmployee,
   findEmployee,
   getAllEmployee,
+  findEmployeeByName,
 } = require("../Controllers/employeeController");
 const authenicateToken = require("../Middleware/authenticateToken");
 const { addEmployeeValidation } = require("../Utils/employeeValidation");
@@ -37,5 +38,6 @@ router.post(
 
 router.get("/all", authenicateToken, paginatedData(Employee), getAllEmployee);
 router.get("/findById/:id", authenicateToken, findEmployee);
+router.get("/findByName/:name", authenicateToken, findEmployeeByName);
 
 module.exports.employeeRouter = router;
