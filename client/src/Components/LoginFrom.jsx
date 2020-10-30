@@ -6,10 +6,18 @@ import {
   Input,
   InputLabel,
 } from "@material-ui/core";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../Redux/Auth/action";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Wrapper = styled.div`
+  padding: 10px;
+`;
+
 function LoginFrom() {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const formData = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
@@ -20,7 +28,9 @@ function LoginFrom() {
     dispatch(loginUser(user));
   };
   return (
-    <div>
+    <Wrapper>
+      <h2>Login</h2>
+      <h4 style={{ color: "red" }}>{auth.errMsg && auth.errMsg}</h4>
       <form onSubmit={formData}>
         <FormGroup>
           <FormControl>
@@ -34,7 +44,10 @@ function LoginFrom() {
         </FormGroup>
         <Button type="submit">Login</Button>
       </form>
-    </div>
+      <p>
+        Don't have an account <Link to="/register">Register Here!!</Link>
+      </p>
+    </Wrapper>
   );
 }
 

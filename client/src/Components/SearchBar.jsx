@@ -127,6 +127,7 @@ function SearchBar() {
           </div>
         </div>
         <div className="center">
+          <h3>Set Data Limit</h3>
           <div className="row">
             <FormControl>
               <Input

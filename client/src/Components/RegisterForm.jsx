@@ -8,10 +8,10 @@ import {
 } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../Redux/Auth/action";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 function RegisterFrom() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.auth);
   const history = useHistory();
   const formData = (e) => {
     e.preventDefault();
@@ -33,6 +33,8 @@ function RegisterFrom() {
           }}
         />
       )}
+      <h2>Register</h2>
+      <h4 style={{ color: "red" }}>{state.errMsg && state.errMsg}</h4>
       <form onSubmit={formData}>
         <FormGroup>
           <FormControl>
@@ -50,6 +52,9 @@ function RegisterFrom() {
         </FormGroup>
         <Button type="submit">Register</Button>
       </form>
+      <p>
+        Already have an account <Link to="/login">Login Here!!</Link>
+      </p>
     </div>
   );
 }
