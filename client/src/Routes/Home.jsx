@@ -1,25 +1,31 @@
 import React from "react";
 // import { useSelector } from "react-redux";
+import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
+import MainBg from "../Components/MainBg";
+
+const Wrapper = styled.div``;
 
 function Home({ children, ...rest }) {
-  const state = { isAuth: true };
+  const state = { isAuth: false };
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        !state.isAuth ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/dashboard",
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+    <Wrapper>
+      <Route
+        {...rest}
+        render={({ location }) =>
+          !state.isAuth ? (
+            <MainBg>{children}</MainBg>
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/dashboard",
+                state: { from: location },
+              }}
+            />
+          )
+        }
+      />
+    </Wrapper>
   );
 }
 
