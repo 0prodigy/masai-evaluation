@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import EmployeeForm from "../Components/EmployeeForm";
 import LoginFrom from "../Components/LoginFrom";
 import RegisterFrom from "../Components/RegisterForm";
 import Home from "./Home";
@@ -32,7 +33,9 @@ function MainRoutes() {
           </Home>
         )}
       />
-      <PrivateRoutes path="/dashboard"></PrivateRoutes>
+      <PrivateRoutes path="/dashboard">
+        <EmployeeForm />
+      </PrivateRoutes>
     </Switch>
   );
 }

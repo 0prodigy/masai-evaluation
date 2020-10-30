@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 function PrivateRoutes({ children, ...rest }) {
-  const state = { isAuth: false };
+  const state = { isAuth: true };
   return (
     <Route
       {...rest}

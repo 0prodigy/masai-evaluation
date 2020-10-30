@@ -7,7 +7,7 @@ import MainBg from "../Components/MainBg";
 const Wrapper = styled.div``;
 
 function Home({ children, ...rest }) {
-  const state = { isAuth: false };
+  const state = { isAuth: true };
   return (
     <Wrapper>
       <Route
