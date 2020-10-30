@@ -8,7 +8,10 @@ import {
   TableRow,
 } from "@material-ui/core";
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { getAllEmployee } from "../Redux/Employee/action";
 const Wrapper = styled.div`
   background: #f5f7f9;
   padding: 20px;
@@ -29,6 +32,13 @@ const Wrapper = styled.div`
 `;
 
 function Employees() {
+  const dispatch = useDispatch();
+  const { auth, employee } = useSelector((state) => state);
+  useEffect(() => {
+    dispatch(getAllEmployee(auth.authToken));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Wrapper>
       <TableContainer component={Paper} className="table-container">
@@ -44,20 +54,23 @@ function Employees() {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-              <TableCell>
-                <img
-                  src="/logo192.png"
-                  alt="lgo"
-                  style={{ width: 60, borderRadius: 10 }}
-                />{" "}
-              </TableCell>
-              <TableCell className="name">Name</TableCell>
-              <TableCell>Department</TableCell>
-              <TableCell>Gender</TableCell>
-              <TableCell>Salary</TableCell>
-              <TableCell>Paid</TableCell>
-            </TableRow>
+            {employee.employee &&
+              employee.employee?.map((item) => (
+                <TableRow>
+                  <TableCell key={item.id}>
+                    <img
+                      src={item.image || "/logo192.png"}
+                      alt="lgo"
+                      style={{ width: 60, borderRadius: 10 }}
+                    />{" "}
+                  </TableCell>
+                  <TableCell className="name">{item.name}</TableCell>
+                  <TableCell>{item.department}</TableCell>
+                  <TableCell>{item.gender}</TableCell>
+                  <TableCell>{item["salary"] && item["salary"]}</TableCell>
+                  <TableCell>0</TableCell>
+                </TableRow>
+              ))}
             <TableRow>
               <TableCell>
                 <img

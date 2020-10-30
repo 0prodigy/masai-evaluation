@@ -7,7 +7,7 @@ import MainBg from "../Components/MainBg";
 const Wrapper = styled.div``;
 
 function Home({ children, ...rest }) {
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.auth);
   return (
     <Wrapper>
       <Route

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 function PrivateRoutes({ children, ...rest }) {
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.auth);
   return (
     <Route
       {...rest}
