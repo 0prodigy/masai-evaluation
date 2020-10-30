@@ -6,7 +6,7 @@ const exists = {
 };
 
 const registerValidation = [
-  body("Name").exists(exists).withMessage("Do you have name?"),
+  body("name").exists(exists).withMessage("Do you have name?"),
   body("email").isEmail().withMessage("Email is not valid"),
   body("password")
     .exists(exists)

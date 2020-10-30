@@ -2,6 +2,8 @@ const Employer = require("../Models/Employer");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { validationResult } = require("express-validator");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const myValidation = validationResult.withDefaults({
   formatter: (err) => {
