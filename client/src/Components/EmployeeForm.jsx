@@ -23,21 +23,12 @@ function EmployeeForm() {
   const [gender, setGender] = useState("male");
   const [department, setDepartment] = useState("");
   const dispatch = useDispatch();
-  const { auth, employee } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const [add, setAdd] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
-    let user = {
-      name: data.get("name"),
-      department: data.get("department"),
-      gender: data.get("gender"),
-      joiningDate: data.get("joiningDate"),
-      image: data.get("image"),
-      salary: data.get("salary"),
-    };
-    console.log(user);
-    dispatch(addEmployee(auth.authToken, data)).then((res) => console.log(res));
+    dispatch(addEmployee(auth.authToken, data)).then((res) => setAdd(true));
   };
 
   return (
@@ -45,7 +36,7 @@ function EmployeeForm() {
       {add && (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: "/dashboard",
           }}
         />
       )}
