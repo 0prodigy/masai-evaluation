@@ -6,11 +6,18 @@ import {
   Input,
   InputLabel,
 } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../Redux/Auth/action";
 function LoginFrom() {
+  const dispatch = useDispatch();
   const formData = (e) => {
     e.preventDefault();
     let data = new FormData(e.target);
-    console.log(data);
+    let user = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    dispatch(loginUser(user));
   };
   return (
     <div>

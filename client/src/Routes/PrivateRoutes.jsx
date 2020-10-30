@@ -1,9 +1,9 @@
 import React from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 function PrivateRoutes({ children, ...rest }) {
-  const state = { isAuth: true };
+  const state = useSelector((state) => state);
   return (
     <Route
       {...rest}

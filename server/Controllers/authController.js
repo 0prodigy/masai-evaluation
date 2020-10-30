@@ -18,7 +18,7 @@ const registerEmployer = async (req, res) => {
   const errors = myValidation(req);
   if (!errors.isEmpty()) {
     const { err, message } = errors.array()[0];
-    return res.json({ err, message });
+    return res.status(422).json({ err, message });
   } else {
     const emailExists = await Employer.findOne({ email: req.body.email });
     if (emailExists) {
@@ -48,10 +48,9 @@ const registerEmployer = async (req, res) => {
 
 const loginEmployer = async (req, res) => {
   const errors = myValidation(req);
-
   if (!errors.isEmpty()) {
     const { err, message } = errors.array({ onlyFirstError: true })[0];
-    return res.json({ err, message });
+    return res.status(422).json({ err, message });
   } else {
     try {
       const employer = await Employer.findOne({ email: req.body.email });

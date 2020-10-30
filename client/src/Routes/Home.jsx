@@ -1,5 +1,5 @@
 import React from "react";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
 import MainBg from "../Components/MainBg";
@@ -7,7 +7,7 @@ import MainBg from "../Components/MainBg";
 const Wrapper = styled.div``;
 
 function Home({ children, ...rest }) {
-  const state = { isAuth: true };
+  const state = useSelector((state) => state);
   return (
     <Wrapper>
       <Route
