@@ -4,7 +4,7 @@ const paginatedData = (model) => {
     let limit = parseInt(req.query.limit) || 10;
     let sort = req.query.sortBy || "";
     let order = parseInt(req.query.orderBy) || 1;
-    let fillter = req.query.fillter || {};
+    let fillter = req.query.fillter || JSON.stringify({});
     fillter = JSON.parse(fillter);
 
     let listCount = await model.countDocuments().exec();

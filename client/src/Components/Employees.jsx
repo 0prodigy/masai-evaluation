@@ -10,6 +10,7 @@ import {
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import Payment from "./Payment";
 import SearchBar from "./SearchBar";
 const Wrapper = styled.div`
   background: #f5f7f9;
@@ -40,6 +41,7 @@ function Employees() {
 
   return (
     <Wrapper>
+      <Payment />
       <TableContainer component={Paper} className="table-container">
         <SearchBar />
         <Table aria-label="Employee Tabel">
@@ -70,7 +72,7 @@ function Employees() {
                   <TableCell>{item["salary"] && item["salary"]}</TableCell>
                   <TableCell>
                     {item["payments"] &&
-                      item.payments.reduce((a, b) => a + b.amount, 0)}
+                      item.payments.reduce((a, b) => a + parseInt(b.amount), 0)}
                   </TableCell>
                 </TableRow>
               ))}

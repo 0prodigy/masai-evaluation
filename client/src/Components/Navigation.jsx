@@ -33,7 +33,7 @@ function Navigation() {
               <img src="/logo192.png" alt="avatar" style={{ width: 30 }} />
             </div>
             <div>
-              <h4>Vikash</h4>
+              <h4 onClick={() => window.location.reload()}>Logout</h4>
             </div>
           </div>
         </div>

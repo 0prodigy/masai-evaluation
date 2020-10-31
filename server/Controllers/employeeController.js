@@ -17,7 +17,7 @@ const addEmployee = async (req, res) => {
   const errors = myValidation(req);
   if (!errors.isEmpty()) {
     const { err, message } = errors.array()[0];
-    return res.status(422).json({ err, message });
+    return res.status(400).json({ err, message });
   } else {
     const employee = new Employee({
       id: v4(),
@@ -78,10 +78,10 @@ const findEmployeeByName = async (req, res) => {
 
 const addPayemnt = async (req, res) => {
   const errors = myValidation(req);
-  console.log(req.body);
+
   if (!errors.isEmpty()) {
     const { err, message } = errors.array()[0];
-    return res.status(422).json({ err, message });
+    return res.status(400).json({ err, message });
   } else {
     try {
       let user = await Employee.findOne({ id: req.body.id });
