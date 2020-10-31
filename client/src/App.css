@@ -10,6 +10,19 @@ select {
   width: 100%;
 }
 
+body {
+  position: relative;
+}
+
 .payment-Form > div {
   min-width: 25%;
+}
+
+.payment {
+  background: #fff;
+  width: 330px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: #333;
 }

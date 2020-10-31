@@ -14,6 +14,11 @@ const Wrapper = styled.div`
   }
   a {
     padding: 10px 20px;
+    text-decoration: none;
+    box-shadow: 0px 0px 5px #f6f9f7;
+    background: #304236;
+    color: #fff;
+    margin: 0 5px;
   }
 `;
 function Navigation() {

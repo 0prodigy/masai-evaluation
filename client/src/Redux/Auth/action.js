@@ -31,9 +31,10 @@ const loginUser = (data) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST, payload: "LOGIN" });
   try {
     const res = await auth.post("/login", data).then((res) => res.data);
+
     dispatch({ type: LOGIN_SUCCESS, payload: res });
   } catch (err) {
-    dispatch({ type: LOGIN_FAILURE, payload: err.response.data });
+    dispatch({ type: LOGIN_FAILURE, payload: err });
   }
 };
 

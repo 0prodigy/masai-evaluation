@@ -1,4 +1,4 @@
-import { FormControl, TextField } from "@material-ui/core";
+import { Button, FormControl, Modal, TextField } from "@material-ui/core";
 import Axios from "axios";
 import React from "react";
 import { useState } from "react";
@@ -11,11 +11,32 @@ const Wrapper = styled.div`
   width: 330px;
   position: absolute;
   top: 21%;
+
+  .payment {
+    background: #fff;
+    width: 330px;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, 50%);
+    color: #333;
+  }
 `;
 function SearchContainer() {
   const [name, setName] = useState("");
   const [result, setResult] = useState([]);
   const { auth } = useSelector((state) => state);
+  const [open, setOpen] = useState(false);
+  const [user, setUser] = useState({});
+
+  const handleOpen = (user) => {
+    setUser(user);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setUser({});
+  };
   const handleChange = (e) => {
     setName(e.target.value);
     try {
@@ -32,6 +53,24 @@ function SearchContainer() {
       console.log(err);
     }
   };
+
+  const body = (
+    <div className="payment">
+      <h2 id="simple-modal-title">All Transactions</h2>
+      <p id="simple-modal-description">
+        {user["payments"] ? (
+          user["payments"].map((pay) => (
+            <p>
+              date: {pay.date} payment: {pay.amount}
+            </p>
+          ))
+        ) : (
+          <p>No payments detail</p>
+        )}
+      </p>
+    </div>
+  );
+
   return (
     <Wrapper>
       <FormControl>
@@ -61,10 +100,25 @@ function SearchContainer() {
                   {user["payments"] &&
                     user.payments.reduce((a, b) => a + parseInt(b.amount), 0)}
                 </p>
+                <Button
+                  onClick={() => {
+                    handleOpen(user);
+                  }}
+                >
+                  Show All Transaction
+                </Button>
               </div>
             </div>
           ))}
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body}
+      </Modal>
     </Wrapper>
   );
 }
