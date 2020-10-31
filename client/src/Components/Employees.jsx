@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Payment from "./Payment";
 import SearchBar from "./SearchBar";
+import SearchContainer from "./SearchContainer";
 const Wrapper = styled.div`
   background: #f5f7f9;
   padding: 20px;
@@ -42,6 +43,7 @@ function Employees() {
   return (
     <Wrapper>
       <Payment />
+      <SearchContainer />
       <TableContainer component={Paper} className="table-container">
         <SearchBar />
         <Table aria-label="Employee Tabel">

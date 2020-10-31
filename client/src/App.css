@@ -9,3 +9,7 @@ input,
 select {
   width: 100%;
 }
+
+.payment-Form > div {
+  min-width: 25%;
+}

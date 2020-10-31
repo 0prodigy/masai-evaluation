@@ -68,6 +68,7 @@ function Payment() {
       <form
         onSubmit={handlePayment}
         style={{ display: "flex", justifyContent: "space-around" }}
+        className="paymentForm"
       >
         <FormControl>
           <InputLabel id="employee">Employee</InputLabel>
